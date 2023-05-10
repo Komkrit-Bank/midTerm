@@ -153,7 +153,9 @@
   {% block content %}
     <div class="container-lg d-flex gap-3 justify-content-center">
       <div class="card w-25">
-        <img src="{{ url_for('static', filename='ps5-product-thumbnail-01-en-14sep21.jpg')}}" class="card-img-top img-fluid" alt="...">
+        <div class="image_container">
+          <img src="{{ url_for('static', filename='ps5-product-thumbnail-01-en-14sep21.jpg')}}" class="card-img-top img-fluid" alt="...">
+        </div>
         <div class="card-body">
           <h5 class="card-title">Card title</h5>
           <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
@@ -161,7 +163,9 @@
         </div>
       </div>
       <div class="card w-25">
-        <img src="{{ url_for('static', filename='fotor_2023-5-10_18_37_18.jpg')}}" class="card-img-top img-fluid" alt="...">
+        <div class="image_container">
+          <img src="{{ url_for('static', filename='fotor_2023-5-10_18_37_18.jpg')}}" class="card-img-top img-fluid" alt="...">
+        </div>
         <div class="card-body">
           <h5 class="card-title">Card title</h5>
           <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
