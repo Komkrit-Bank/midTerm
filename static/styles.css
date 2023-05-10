@@ -8,6 +8,11 @@
     max-width: fit-content;
     font-size: 12px;
 }
+
+.dropdown-item {
+    font-size: 12px;
+}
+
 .form-select {
     display:inline-block;
 }
