@@ -1,3 +1,17 @@
 .carousel__image {
     max-height: 400px;
 }
+
+.btn__filter {
+    border-radius: 50px;
+    margin-right: 10px;
+    max-width: fit-content;
+    font-size: 12px;
+}
+.form-select {
+    display:inline-block;
+}
+
+option, select {
+    cursor: pointer;
+}
