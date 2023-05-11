@@ -1,1 +1,82 @@
-{% extends 'nav.html' %}
+{% extends 'template.html' %}
+
+{% block body %}
+<div class="container my-3  px-4 text-center">
+    <div class="row gx-5">
+        <div class="col-sm-6 my-3">
+            <img class="img-fluid border-0 rounded product__image" src="{{ url_for('static', filename='566000000315201.webp')}}">
+        </div>
+        <div class="container col-sm-6 border rounded">
+            <h5 class="pt-3 text-start">Playstation 5 (With Controller)</h5>
+            <p class="text-start">Product description goes here, Lorem ipsum dolor sit amet consectetur adipisicing elit. Id voluptates animi provident.</p>
+            <h6 class="pt-1 text-start">Price: $599</h6>
+            <h6 class="pt-1 text-start">Quantity</h6>
+            <input type="text" class="form-control" placeholder="1">
+            <div class="d-flex d-sm-flex justify-content-sm-start my-3 align-items-center">
+                <button class="btn btn-dark me-sm-2" type="button">Add to Cart</button>
+            </div>
+        </div>
+    </div>
+    <div class="row gx-5 my-3">
+        <div class="col-sm-6">
+            <h6 class="text-start my-3">Stock (75/100)</h6>
+            <div class="progress" style="height: 25px;">
+                <div class="progress-bar bg-dark fs-6" role="progressbar" style="width: 75%;" aria-valuenow="75" aria-valuemin="0" aria-valuemax="100">75%</div>
+            </div>
+        </div>
+        <div class="container-fluid col-sm-6 p-0 my-2">
+            <ul class="list-group text-start">
+                <li class="list-group-item list-group-item-secondary">Specifications</li>
+                <li class="list-group-item">Media: Ultra HD Blu-ray Blu-ray DVD Download</li>
+                <li class="list-group-item">CPU: Custom 8-core AMD Zen 2 Variable frequency up to 3.5 GHz</li>
+                <li class="list-group-item">Memory: 16 GB/256-bit GDDR6 SDRAM 512 MB DDR4 RAM (for background tasks)</li>
+                <li class="list-group-item">Storage: Custom 825 GB PCIe 4.0 NVMe SSD</li>
+                <li class="list-group-item">Graphics: Custom AMD RDNA 236 CUs Variable frequency up to 2.23 GHz 10.3 TFLOPS peak</li>
+                <li class="list-group-item">Controller : DualSense, DualShock 4</li>
+            </ul>
+        </div>
+    </div>
+</div>
+<div class="container-sm card p-0">
+    <h5 class="card-header">Rate This Product</h5>
+    <div class="mx-3 my-3">
+        <div class="form-check form-check-inline">
+            <input class="form-check-input" type="radio" name="exampleRadios" id="exampleRadios1" value="option1" checked>
+            <label class="form-check-label" for="exampleRadios1">1</label>
+        </div>
+        <div class="form-check form-check-inline">
+            <input class="form-check-input" type="radio" name="exampleRadios" id="exampleRadios2" value="option2">
+            <label class="form-check-label" for="exampleRadios2">2</label>
+        </div>
+        <div class="form-check form-check-inline">
+            <input class="form-check-input" type="radio" name="exampleRadios" id="exampleRadios3" value="option3">
+            <label class="form-check-label" for="exampleRadios2">3</label>
+        </div>
+        <div class="form-check form-check-inline">
+            <input class="form-check-input" type="radio" name="exampleRadios" id="exampleRadios4" value="option4">
+            <label class="form-check-label" for="exampleRadios2">4</label>
+        </div>
+        <div class="form-check form-check-inline">
+            <input class="form-check-input" type="radio" name="exampleRadios" id="exampleRadios5" value="option5">
+            <label class="form-check-label" for="exampleRadios2">5</label>
+        </div>
+        <div class="form-check form-check-inline">
+            <button type="button" class="btn btn-dark">Submit Rating</button>
+        </div>
+    </div>
+</div>
+<div class="container-sm card p-0">
+    <h5 class="card-header">Review</h5>
+    <div class="card-body">
+        <blockquote class="blockquote mb-0 mt-2">
+            <h5>Komkrit Ken</h5>
+            <p>This Item is very good. if you are gamer don't miss it anyway</p>
+            <hr>
+        </blockquote>
+        <blockquote class="blockquote mb-0 mt-2">
+            <h5>Nuttawut J Johnson</h5>
+            <p>it is the best game console ever</p>
+        </blockquote>
+    </div>
+</div>
+{% endblock %}
