@@ -2,11 +2,16 @@
     max-height: 400px;
 }
 
-.btn__filter {
+.btn__filter, .btn__cart {
     border-radius: 50px;
     margin-right: 10px;
     max-width: fit-content;
     font-size: 12px;
+}
+
+.btn__cart {
+    font-size: 10px;
+    font-weight: bold;
 }
 
 .dropdown-item {
