@@ -48,47 +48,52 @@
   <div class="row">
     <div class="col col-10 d-none d-lg-block">
       <!--button filter 1-->
-      <select class="form-select btn__filter bg-light" aria-label="Default select example">
-        <option selected disabled>Product Type</option>
-        <option value="1">Game consoles</option>
-        <option value="2">Gamming Gadgets</option>
-        <option value="3">Games</option>
-      </select>
-      <!--button filter 2-->
-      <select class="form-select btn__filter bg-light" aria-label="Default select example">
-        <option selected disabled>Price</option>
-        <option value="1">One</option>
-        <option value="2">Two</option>
-        <option value="3">Three</option>
-      </select>
-      <!--button filter 3-->
-      <select class="form-select btn__filter bg-light" aria-label="Default select example">
-        <option selected disabled>Review</option>
-        <option value="1">One</option>
-        <option value="2">Two</option>
-        <option value="3">Three</option>
-      </select>
-      <!--button filter 4-->
-      <select class="form-select btn__filter bg-light" aria-label="Default select example">
-        <option selected disabled>Color</option>
-        <option value="1">One</option>
-        <option value="2">Two</option>
-        <option value="3">Three</option>
-      </select>
-      <!--button filter 5-->
-      <select class="form-select btn__filter bg-light" aria-label="Default select example">
-        <option selected disabled>Material</option>
-        <option value="1">One</option>
-        <option value="2">Two</option>
-        <option value="3">Three</option>
-      </select>
-      <!--button filter 6-->
-      <select class="form-select btn__filter bg-light" aria-label="Default select example">
-        <option selected disabled>Offer</option>
-        <option value="1">One</option>
-        <option value="2">Two</option>
-        <option value="3">Three</option>
-      </select>
+      <form action="{{ url_for('index')}}" method= "POST" class="">
+        <select class="form-select btn__filter bg-light" aria-label="Default select example">
+          <option selected disabled>Product Type</option>
+          <option value="console">Game consoles</option>
+          <option value="gadgets">Gamming Gadgets</option>
+          <option value="games">Games</option>
+        </select>
+        <!--button filter 2-->
+        <select class="form-select btn__filter bg-light" aria-label="Default select example">
+          <option selected disabled>Price</option>
+          <option value="1">One</option>
+          <option value="2">Two</option>
+          <option value="3">Three</option>
+        </select>
+        <!--button filter 3-->
+        <select id="review_select" class="form-select btn__filter bg-light" onchange="ajaxRequest()" 
+          aria-label="Review Select">
+          <option selected disabled>Review</option>
+          <option value="5_stars">5 Stars</option>
+          <option value="4_stars">4 Stars</option>
+          <option value="3_stars">3 Stars</option>
+          <option value="2_stars">2 Stars</option>
+          <option value="1_star">1 Star</option>
+        </select>
+        <!--button filter 4-->
+        <select class="form-select btn__filter bg-light" aria-label="Default select example">
+          <option selected disabled>Color</option>
+          <option value="1">One</option>
+          <option value="2">Two</option>
+          <option value="3">Three</option>
+        </select>
+        <!--button filter 5-->
+        <select class="form-select btn__filter bg-light" aria-label="Default select example">
+          <option selected disabled>Material</option>
+          <option value="1">One</option>
+          <option value="2">Two</option>
+          <option value="3">Three</option>
+        </select>
+        <!--button filter 6-->
+        <select class="form-select btn__filter bg-light" aria-label="Default select example">
+          <option selected disabled>Offer</option>
+          <option value="1">One</option>
+          <option value="2">Two</option>
+          <option value="3">Three</option>
+        </select>
+      </form>
     </div>
     <div class="col col-lg-2">
       <!--button sort by-->
@@ -154,6 +159,7 @@
     <div class="container mb-4">
       <h4 class="text-sm-start fw-bold">Product Type: Game console</h4>
     </div>
+    <h6 id= 'test-text'></h6>
     <div class="container mx-auto">
       <div class="row row-cols-1 row-cols-lg-4 row-cols-md-2"> 
         <!-- row-cols-1 row-cols-md-4 -->
