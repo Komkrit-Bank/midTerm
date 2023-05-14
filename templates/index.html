@@ -48,7 +48,8 @@
   <div class="row">
     <div class="col col-10 d-none d-lg-block">
       <!--button filter 1-->
-      <form action="{{ url_for('index')}}" method= "POST" class="">
+      <form action="/filterData" method= "POST" class="">
+        <input type="hidden" id= 'test-text' name="test-text">
         <select class="form-select btn__filter bg-light" aria-label="Default select example">
           <option selected disabled>Product Type</option>
           <option value="console">Game consoles</option>
@@ -63,7 +64,7 @@
           <option value="3">Three</option>
         </select>
         <!--button filter 3-->
-        <select id="review_select" class="form-select btn__filter bg-light" onchange="ajaxRequest()" 
+        <select id="review_select" class="form-select btn__filter bg-light" onchange="ajaxRequest()"
           aria-label="Review Select">
           <option selected disabled>Review</option>
           <option value="5_stars">5 Stars</option>
@@ -159,7 +160,6 @@
     <div class="container mb-4">
       <h4 class="text-sm-start fw-bold">Product Type: Game console</h4>
     </div>
-    <h6 id= 'test-text'></h6>
     <div class="container mx-auto">
       <div class="row row-cols-1 row-cols-lg-4 row-cols-md-2"> 
         <!-- row-cols-1 row-cols-md-4 -->
@@ -168,7 +168,7 @@
             <img src="{{ url_for('static', filename='566000000315201.webp')}}" class="card-img-top h-100" alt="...">
             <div class="card-body">
               <h5 class="card-title"><b>PS5 Digital Edition<br>(2 Controllers)</b></h5>
-              <p class="card-text">Basic Bundle Playstation 5 with <br>2 controllers</p>
+              <p class="card-text">Basic Bundle Playstation 5 with 2 controllers</p>
               <div class="card__footer">
                 <div class="button__container">
                   <a href="#" class="btn btn-primary btn-sm btn__cart">Add to Cart</a>

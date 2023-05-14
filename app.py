@@ -1,5 +1,11 @@
-from flask import Flask, render_template, request
+from flask import Flask, render_template, request, redirect
+import pandas as pd
+import sqlite3
+
 app = Flask(__name__)
+
+conn = sqlite3.connect('product.db')
+cur = conn.cursor()
 
 @app.route('/', methods=['GET', 'POST'])
 def index():
@@ -10,6 +16,11 @@ def index():
 @app.route('/product')
 def product():
     return render_template('product.html')
+
+@app.route('/filterData')
+def filterData():
+    test = request.form['test-text']
+    return render_template('fetchtestpage.html', test= test)
 
 @app.route('/fetchtestpage', methods= ['GET', 'POST'])
 def fetchtestpage():
