@@ -7,7 +7,7 @@ app = Flask(__name__)
 conn = sqlite3.connect('product.db')
 
 # def extract_data(data_df):
-#     data_key = [row[1][0] for row in data_df.iterrows()]
+#     data_cat = [row[1][3] for row in data_df.iterrows()]
 #     data_col = data_df.columns.to_list()[1:]
 #     data_body = []
 
@@ -36,15 +36,18 @@ def update_sql(type, conn, task, id):
     cur = conn.cursor()
     cur.execute(sql, task)
     conn.commit()
+    
+def filter_date(column, conn, con):
+    return
 
 product_df = pd.read_csv(r'C:\Users\HP\Documents\GitHub\midTerm.github.io\src\productData.csv', encoding= 'utf8')
 rows = [tuple(row[1].to_list()) for row in product_df.iterrows()]
+product_col = product_df.columns.to_list()
+
 
 for row in rows:
     update_sql('product', conn, row[1:], row[0])
 # Use executemany() to insert multiple records at a time
-
-print(rows)
 
 @app.route('/', methods=['GET', 'POST'])
 def index():
