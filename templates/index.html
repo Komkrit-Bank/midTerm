@@ -52,16 +52,17 @@
         <input type="hidden" id= 'test-text' name="test-text">
         <select class="form-select btn__filter bg-light" aria-label="Default select example">
           <option selected disabled>Product Type</option>
-          <option value="console">Game consoles</option>
-          <option value="gadgets">Gamming Gadgets</option>
+          <option value="console">Consoles</option>
+          <option value="gadgets">Gadgets</option>
           <option value="games">Games</option>
         </select>
         <!--button filter 2-->
         <select class="form-select btn__filter bg-light" aria-label="Default select example">
           <option selected disabled>Price</option>
-          <option value="1">One</option>
-          <option value="2">Two</option>
-          <option value="3">Three</option>
+          <option value="1">Above 59.99$</option>
+          <option value="2">59.99$ - 40.00$</option>
+          <option value="3">39.99$ - 20.00$</option>
+          <option value="3">Below 20.00$</option>
         </select>
         <!--button filter 3-->
         <select id="review_select" class="form-select btn__filter bg-light" onchange="ajaxRequest()"
@@ -76,23 +77,25 @@
         <!--button filter 4-->
         <select class="form-select btn__filter bg-light" aria-label="Default select example">
           <option selected disabled>Color</option>
-          <option value="1">One</option>
-          <option value="2">Two</option>
-          <option value="3">Three</option>
+          <option value="red">Red</option>
+          <option value="blue">Blue</option>
+          <option value="green">Green</option>
+          <option value="yellow">Yellow</option>
+          <option value="black">Black</option>
+          <option value="white">White</option>
         </select>
         <!--button filter 5-->
         <select class="form-select btn__filter bg-light" aria-label="Default select example">
           <option selected disabled>Material</option>
-          <option value="1">One</option>
-          <option value="2">Two</option>
-          <option value="3">Three</option>
+          <option value="plastic">Plastic</option>
+          <option value="steel">Steel</option>
+          <option value="glass">Glass</option>
         </select>
         <!--button filter 6-->
         <select class="form-select btn__filter bg-light" aria-label="Default select example">
           <option selected disabled>Offer</option>
-          <option value="1">One</option>
-          <option value="2">Two</option>
-          <option value="3">Three</option>
+          <option value="1">Special Discount</option>
+          <option value="2">Bundle Product</option>
         </select>
       </form>
     </div>
@@ -158,16 +161,17 @@
 </div>
   {% block content %}
     <div class="container mb-4">
-      <h4 class="text-sm-start fw-bold">Product Type: Game console</h4>
+      <h4 class="text-sm-start fw-bold">Product Type: {{ category|capitalize }}</h4>
     </div>
     <div class="container mx-auto">
       <div class="row row-cols-1 row-cols-lg-4 row-cols-md-2"> 
         {% for product in products %}
           <div class="col mb-3">
             <div class="card h-100">
-              <img src="static/{{ product[9] }}" class="card-img-top h-100" alt="...">
+              <img src="static/images/{{ product[9] }}" class="card-img-top h-100" alt="...">
               <div class="card-body">
                 <h5 class="card-title"><b>{{ product[1] }}</b></h5>
+                <p class="card-text"><b>Price:</b> {{ product[2] }} $</p>
                 <p class="card-text">{{ product[8] }}</p>
                 <div class="card__footer">
                   <div class="button__container">

@@ -5,6 +5,7 @@ import sqlite3
 app = Flask(__name__)
 
 conn = sqlite3.connect('product.db')
+cur = conn.cursor()
 
 # def extract_data(data_df):
 #     data_cat = [row[1][3] for row in data_df.iterrows()]
@@ -33,17 +34,17 @@ def update_sql(type, conn, task, id):
     else:
         return
     
-    cur = conn.cursor()
     cur.execute(sql, task)
     conn.commit()
     
-def filter_date(column, conn, con):
-    return
+def filter_data(column, con):
+    cur.execute(f'SELECT * FROM product WHERE {column} = ?', (con,))
+    data = cur.fetchall()
+    return data
 
-product_df = pd.read_csv(r'C:\Users\HP\Documents\GitHub\midTerm.github.io\src\productData.csv', encoding= 'utf8')
+product_df = pd.read_csv(r'src\productData.csv', encoding= 'utf8')
 rows = [tuple(row[1].to_list()) for row in product_df.iterrows()]
 product_col = product_df.columns.to_list()
-
 
 for row in rows:
     update_sql('product', conn, row[1:], row[0])
@@ -52,8 +53,9 @@ for row in rows:
 @app.route('/', methods=['GET', 'POST'])
 def index():
     products = rows
+    category = 'console'
     review = request.form.get('review_select')
-    return render_template('index.html', review= review, products= products)
+    return render_template('index.html', review= review, products= products, category= category)
 
 @app.route('/product')
 def product():
