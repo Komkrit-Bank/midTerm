@@ -7,6 +7,20 @@ app = Flask(__name__)
 conn = sqlite3.connect('product.db')
 cur = conn.cursor()
 
+def extract_data(data_df):
+    data_key = [row[1][0] for row in data_df.iterrows()]
+    data_col = data_df.columns.to_list()[1:]
+    data_body = []
+
+    for row in data_df.iterrows():
+        data_body.append(dict(zip(data_col, row[1][1:])))
+
+    complete_data = dict(zip(data_key, data_body))
+    return complete_data
+
+product_df = pd.read_csv(r'C:\Users\HP\Documents\GitHub\midTerm.github.io\src\productData.csv', encoding= 'utf8')
+print(extract_data(product_df))
+
 @app.route('/', methods=['GET', 'POST'])
 def index():
     test = 'test'
