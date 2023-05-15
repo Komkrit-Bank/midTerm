@@ -27,7 +27,8 @@ def update_sql(type, conn, task, id):
                         color = ?,
                         material = ?,
                         offer = ?,
-                        product_detail = ?
+                        product_detail = ?,
+                        product_img = ?
                     WHERE product_id = {id}'''
     else:
         return
@@ -43,11 +44,13 @@ for row in rows:
     update_sql('product', conn, row[1:], row[0])
 # Use executemany() to insert multiple records at a time
 
+print(rows)
+
 @app.route('/', methods=['GET', 'POST'])
 def index():
-    test = 'test'
+    products = rows
     review = request.form.get('review_select')
-    return render_template('index.html', review= review, test= test)
+    return render_template('index.html', review= review, products= products)
 
 @app.route('/product')
 def product():

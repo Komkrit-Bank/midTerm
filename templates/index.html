@@ -162,58 +162,26 @@
     </div>
     <div class="container mx-auto">
       <div class="row row-cols-1 row-cols-lg-4 row-cols-md-2"> 
-        <!-- row-cols-1 row-cols-md-4 -->
-        <div class="col mb-3">
-          <div class="card h-100">
-            <img src="{{ url_for('static', filename='566000000315201.webp')}}" class="card-img-top h-100" alt="...">
-            <div class="card-body">
-              <h5 class="card-title"><b>PS5 Digital Edition<br>(2 Controllers)</b></h5>
-              <p class="card-text">Basic Bundle Playstation 5 with 2 controllers</p>
-              <div class="card__footer">
-                <div class="button__container">
-                  <a href="#" class="btn btn-primary btn-sm btn__cart">Add to Cart</a>
-                  <a href="#" class="btn btn-dark btn-sm btn__cart">Details</a>
-                </div>
-                <svg xmlns="http://www.w3.org/2000/svg" width="16px" height="16px" class="bi bi-heart-fill" viewBox="0 0 16 16">
-                  <path fill-rule="evenodd" d="M8 1.314C12.438-3.248 23.534 4.735 8 15-7.534 4.736 3.562-3.248 8 1.314z"/>
-                </svg>
-              </div>
-            </div>
-          </div>
-        </div>
-        <div class="col mb-3">
+        {% for product in products %}
+          <div class="col mb-3">
             <div class="card h-100">
-              <img src="{{ url_for('static', filename='cf2502b959c3c9b49b346539572d8ac1.jpg_720x720q80.jpg')}}" class="card-img-top h-100" alt="...">
+              <img src="static/{{ product[9] }}" class="card-img-top h-100" alt="...">
               <div class="card-body">
-                <h5 class="card-title"><b>Nintendo Switch(Redbox)</b></h5>
-                <p class="card-text">fit your life, transforming from home console to portable system in a snap.</p>
-                <a href="#" class="btn btn-primary btn-sm btn__cart">Add to Cart</a>
-                <a href="#" class="btn btn-dark btn-sm btn__cart" style="margin-left:-10px">Details</a>
+                <h5 class="card-title"><b>{{ product[1] }}</b></h5>
+                <p class="card-text">{{ product[8] }}</p>
+                <div class="card__footer">
+                  <div class="button__container">
+                    <a href="#" class="btn btn-primary btn-sm btn__cart">Add to Cart</a>
+                    <a href="#" class="btn btn-dark btn-sm btn__cart" style="margin-left:-10px">Details</a>
+                  </div>
+                  <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" class="bi bi-heart-fill align-self-center" viewBox="0 0 16 16">
+                    <path fill-rule="evenodd" d="M8 1.314C12.438-3.248 23.534 4.735 8 15-7.534 4.736 3.562-3.248 8 1.314z"/>
+                  </svg>
+                </div>
               </div>
             </div>
-        </div>
-        <div class="col mb-3">
-          <div class="card h-100">
-            <img src="{{ url_for('static', filename='593f0888bf76bb25008b5639.webp')}}" class="card-img-top h-100" alt="...">
-            <div class="card-body">
-              <h5 class="card-title"><b>Xbox One Series X</b></h5>
-              <p class="card-text">Look Better, Play Better with best optimized</p>
-              <a href="#" class="btn btn-primary btn-sm btn__cart">Add to Cart</a>
-              <a href="#" class="btn btn-dark btn-sm btn__cart" style="margin-left:-10px">Details</a>
-            </div>
           </div>
-        </div>
-        <div class="col mb-3">
-          <div class="card h-100">
-            <img src="{{ url_for('static', filename='10138875.jpg')}}" class="card-img-top h-100" alt="...">
-            <div class="card-body">
-              <h5 class="card-title"><b>Xbox One Series S</b></h5>
-              <p class="card-text">Better Performance with light budget device</p>
-              <a href="#" class="btn btn-primary btn-sm btn__cart">Add to Cart</a>
-              <a href="#" class="btn btn-dark btn-sm btn__cart" style="margin-left:-10px">Details</a>
-            </div>
-          </div>
-        </div>
+        {% endfor %}
       </div>
     </div>
     <!-- <div class="container d-lg-flex gap-4 justify-content-evenly">
