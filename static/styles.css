@@ -64,3 +64,15 @@ svg {
 svg:hover {
     fill: red;
 }
+
+.button__carousel{
+    background-color: rgb(33, 107, 180);
+    border-color: rgba(33, 107, 180, 0.6);
+    border-radius: 10px;
+    color: white
+}
+
+
+.button__carousel:hover {
+    background-color: rgba(33, 107, 180, 0.8);
+}
