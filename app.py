@@ -61,6 +61,10 @@ def index():
 def product():
     return render_template('product.html')
 
+@app.route('/payment')
+def payment():
+    return render_template('payment.html')
+
 @app.route('/filterData')
 def filterData():
     test = request.form['test-text']

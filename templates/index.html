@@ -1,4 +1,5 @@
 {% extends 'template.html' %}
+{% block title %} <title>Final For Playing</title> {% endblock %}
 {% block body %}
 <!-- carousel banner slide sections -->
 <div id="carouselExampleAutoplaying" class="carousel container-lg carousel-dark my-3 slide" data-bs-ride="carousel">
@@ -11,7 +12,7 @@
       <div class="carousel-item active">
         <!-- data-bs-interval="10000" -->
         <img src="{{ url_for('static', filename='1.jpg')}}" class="d-block w-100 carousel__image" alt="...">
-        <div class="carousel-caption d-none d-lg-flex mb-3 ms-2">
+        <div class="carousel-caption d-none d-md-flex mb-3 ms-2 mt-lg-5">
           <button type="button" class="button__carousel fs-5"
             style="--bs-btn-padding-y: .25rem; --bs-btn-padding-x: .5rem; --bs-btn-font-size: .75rem;" >
           <b>Buy Now</b>
@@ -83,21 +84,23 @@
           <option value="blue">Blue</option>
           <option value="green">Green</option>
           <option value="yellow">Yellow</option>
-          <option value="yellow"></option>
+          <option value="pink">Pink</option>
+          <option value="white">White</option>
+          <option value="black">Black</option>        
         </select>
         <!--button filter 5-->
         <select class="form-select btn__filter bg-light" aria-label="Default select example">
           <option selected disabled>Material</option>
-          <option value="1">One</option>
-          <option value="2">Two</option>
-          <option value="3">Three</option>
+          <option value="plastic">Plastic</option>
+          <option value="steel">Steel</option>
+          <option value="glass">Glass</option>
         </select>
         <!--button filter 6-->
         <select class="form-select btn__filter bg-light" aria-label="Default select example">
           <option selected disabled>Offer</option>
-          <option value="1">One</option>
-          <option value="2">Two</option>
-          <option value="3">Three</option>
+          <option value="1">Percent Discount</option>
+          <option value="2">Special Bundle</option>
+          <option value="3">Buy Bulk</option>
         </select>
       </form>
     </div>
@@ -163,17 +166,18 @@
 </div>
   {% block content %}
     <div class="container mb-4">
-      <h4 class="text-sm-start fw-bold">Product Type: Game console</h4>
+      <h4 class="text-sm-start fw-bold">Product Type: {{ category|capitalize }}</h4>
     </div>
     <div class="container mx-auto">
       <div class="row row-cols-1 row-cols-lg-4 row-cols-md-2"> 
         {% for product in products %}
           <div class="col mb-3">
             <div class="card h-100">
-              <img src="static/{{ product[9] }}" class="card-img-top h-100" alt="...">
+              <img src="static/images/{{ product[9] }}" class="card-img-top h-100" alt="...">
               <div class="card-body">
                 <h5 class="card-title"><b>{{ product[1] }}</b></h5>
                 <p class="card-text">{{ product[8] }}</p>
+                <p class="card-text"><b>Price: </b> {{ product[2] }} <b>$</b></p>
                 <div class="card__footer">
                   <div class="button__container">
                     <a href="#" class="btn btn-primary btn-sm btn__cart">Add to Cart</a>
@@ -189,29 +193,6 @@
         {% endfor %}
       </div>
     </div>
-    <!-- <div class="container d-lg-flex gap-4 justify-content-evenly">
-        <div class="card mb-3" style="width: 18rem;">
-            <img src="{{ url_for('static', filename='566000000315201.webp')}}" class="card-img-top h-100" alt="...">
-          <div class="card-body">
-            <h5 class="card-title"><b>PS5 Digital Edition<br>(2 Controllers)</b></h5>
-            <p class="card-text">Basic Bundle Playstation 5 with <br>2 controllers</p>
-            <a href="#" class="btn btn-primary btn-sm btn__cart">Add to Cart</a>
-            <a href="#" class="btn btn-dark btn-sm btn__cart" style="margin-left:-10px">Details</a>
-            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" class="bi bi-heart-fill ms-4" viewBox="0 0 16 16">
-              <path fill-rule="evenodd" d="M8 1.314C12.438-3.248 23.534 4.735 8 15-7.534 4.736 3.562-3.248 8 1.314z"/> -->
-            </svg>
-            <!-- <div class="card__footer d-flex justify-content-between">
-                <div class="button__container">
-                  <a href="#" class="btn btn-primary btn-sm btn__cart">Add to Cart</a>
-                  <a href="#" class="btn btn-dark btn-sm btn__cart" style="margin-left:-10px">Details</a>
-                </div>
-                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" class="bi bi-heart-fill align-self-center" viewBox="0 0 16 16">
-                  <path fill-rule="evenodd" d="M8 1.314C12.438-3.248 23.534 4.735 8 15-7.534 4.736 3.562-3.248 8 1.314z"/>
-                </svg>
-            </div> -->
-          <!-- </div>
-        </div> -->
-
   {% endblock %}
 {% endblock %}
     
