@@ -3,24 +3,26 @@
 <!-- carousel banner slide sections -->
 <div id="carouselExampleAutoplaying" class="carousel container-lg carousel-dark my-3 slide" data-bs-ride="carousel">
     <div class="carousel-indicators">
-      <button type="button" data-bs-target="#carouselExampleDark" data-bs-slide-to="0" class="active" aria-current="true" aria-label="Slide 1"></button>
-      <button type="button" data-bs-target="#carouselExampleDark" data-bs-slide-to="1" aria-label="Slide 2"></button>
-      <button type="button" data-bs-target="#carouselExampleDark" data-bs-slide-to="2" aria-label="Slide 3"></button>
+      <button type="button" data-bs-target="#carouselExampleAutoplaying" data-bs-slide-to="0" class="active" aria-current="true" aria-label="Slide 1"></button>
+      <button type="button" data-bs-target="#carouselExampleAutoplaying" data-bs-slide-to="1" aria-label="Slide 2"></button>
+      <button type="button" data-bs-target="#carouselExampleAutoplaying" data-bs-slide-to="2" aria-label="Slide 3"></button>
     </div>
     <div class="carousel-inner">
-      <div class="carousel-item active" data-bs-interval="10000">
+      <div class="carousel-item active">
+        <!-- data-bs-interval="10000" -->
         <img src="{{ url_for('static', filename='1.jpg')}}" class="d-block w-100 carousel__image" alt="...">
         <div class="carousel-caption d-none d-lg-flex mb-3 ms-2">
-          <button type="button" class="btn btn-primary fs-5"
-            style="--bs-btn-padding-y: .25rem; --bs-btn-padding-x: .5rem; --bs-btn-font-size: .75rem;">
+          <button type="button" class="button__carousel fs-5"
+            style="--bs-btn-padding-y: .25rem; --bs-btn-padding-x: .5rem; --bs-btn-font-size: .75rem;" >
           <b>Buy Now</b>
           </button>
         </div>
       </div>
-      <div class="carousel-item" data-bs-interval="2000">
+      <div class="carousel-item">
+        <!-- data-bs-interval="2000" -->
         <img src="{{ url_for('static', filename='2.jpg')}}" class="d-block w-100 carousel__image" alt="...">
         <div class="carousel-caption d-none d-md-flex justify-content-center mb-3">
-          <button type="button" class="btn btn-primary fs-5"
+          <button type="button" class="button__carousel fs-5"
             style="--bs-btn-padding-y: .25rem; --bs-btn-padding-x: .5rem; --bs-btn-font-size: .75rem;">
           <b>Buy Now</b>
           </button>
@@ -34,11 +36,11 @@
         </div>
       </div>
     </div>
-    <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleDark" data-bs-slide="prev">
+    <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleAutoplaying" data-bs-slide="prev">
       <span class="carousel-control-prev-icon" aria-hidden="true"></span>
       <span class="visually-hidden">Previous</span>
     </button>
-    <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleDark" data-bs-slide="next">
+    <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleAutoplaying" data-bs-slide="next">
       <span class="carousel-control-next-icon" aria-hidden="true"></span>
       <span class="visually-hidden">Next</span>
     </button>
@@ -52,16 +54,17 @@
         <input type="hidden" id= 'test-text' name="test-text">
         <select class="form-select btn__filter bg-light" aria-label="Default select example">
           <option selected disabled>Product Type</option>
-          <option value="console">Game consoles</option>
-          <option value="gadgets">Gamming Gadgets</option>
+          <option value="console">Consoles</option>
+          <option value="gadgets">Gadgets</option>
           <option value="games">Games</option>
         </select>
         <!--button filter 2-->
         <select class="form-select btn__filter bg-light" aria-label="Default select example">
           <option selected disabled>Price</option>
-          <option value="1">One</option>
-          <option value="2">Two</option>
-          <option value="3">Three</option>
+          <option value="1">Above 59.99$</option>
+          <option value="2">59.99$ - 40.00$</option>
+          <option value="3">39.99$ - 30.00$</option>
+          <option value="4">Below 30.00$</option>
         </select>
         <!--button filter 3-->
         <select id="review_select" class="form-select btn__filter bg-light" onchange="ajaxRequest()"
@@ -76,9 +79,11 @@
         <!--button filter 4-->
         <select class="form-select btn__filter bg-light" aria-label="Default select example">
           <option selected disabled>Color</option>
-          <option value="1">One</option>
-          <option value="2">Two</option>
-          <option value="3">Three</option>
+          <option value="red">Red</option>
+          <option value="blue">Blue</option>
+          <option value="green">Green</option>
+          <option value="yellow">Yellow</option>
+          <option value="yellow"></option>
         </select>
         <!--button filter 5-->
         <select class="form-select btn__filter bg-light" aria-label="Default select example">
