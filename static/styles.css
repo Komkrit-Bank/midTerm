@@ -49,6 +49,11 @@ option, select {
     color: white;
 }
 
+.slide__1 {
+    left: 7%;
+    right: 7%;
+}
+
 .product__image {
     box-shadow: 1px 1px 0.5px 0.5px black;
 }
@@ -70,6 +75,10 @@ svg:hover {
     border-color: rgba(33, 107, 180, 0.6);
     border-radius: 10px;
     color: white
+}
+
+.button__carousel--1{
+    width: 150px;
 }
 
 
