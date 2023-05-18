@@ -57,9 +57,11 @@ def index():
     review = request.form.get('review_select')
     return render_template('index.html', review= review, products= products, category= category)
 
-@app.route('/product')
-def product():
-    return render_template('product.html')
+@app.route('/product/<int:id>')
+def product(id):
+    pro_detail = product_df[product_df['product_id'] == id].iloc[0, :][1:].to_dict()
+    print(pro_detail)
+    return render_template('product.html', pro_detail= pro_detail)
 
 @app.route('/information', methods= ['GET', 'POST'])
 def information():
@@ -82,4 +84,5 @@ def fetchtestpage():
 def fetchtest():
     return {'some text': 'it was a success!'}
 
-app.run(debug= True)
+if __name__ == '__main__':
+    app.run(debug= True)

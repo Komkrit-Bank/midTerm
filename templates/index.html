@@ -183,7 +183,7 @@
                 <div class="card__footer">
                   <div class="button__container">
                     <a href="#" class="btn btn-primary btn-sm btn__cart">Add to Cart</a>
-                    <a href="#" class="btn btn-dark btn-sm btn__cart" style="margin-left: 10pxs">Details</a>
+                    <a href="{{ url_for('product', id= product[0])}}" class="btn btn-dark btn-sm btn__cart" style="margin-left: 10pxs">Details</a>
                   </div>
                   <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" class="bi bi-heart-fill align-self-center" viewBox="0 0 16 16">
                     <path fill-rule="evenodd" d="M8 1.314C12.438-3.248 23.534 4.735 8 15-7.534 4.736 3.562-3.248 8 1.314z"/>

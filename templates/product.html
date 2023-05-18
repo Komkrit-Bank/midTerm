@@ -4,12 +4,12 @@
 <div class="container my-3  px-4 text-center">
     <div class="row gx-5">
         <div class="col-sm-6 my-3">
-            <img class="img-fluid border-0 rounded product__image" src="{{ url_for('static', filename='ps5-product-thumbnail-01-en-14sep21.jpg')}}">
+            <img class="img-fluid border-0 rounded product__image" src="{{ url_for('static', filename='images/')}}{{ pro_detail.product_img }}">
         </div>
         <div class="container col-sm-6 border rounded">
-            <h5 class="pt-3 text-start">Playstation 5 (With Controller)</h5>
-            <p class="text-start">Product description goes here, Lorem ipsum dolor sit amet consectetur adipisicing elit. Id voluptates animi provident.</p>
-            <h6 class="pt-1 text-start">Price: $599</h6>
+            <h5 class="pt-3 text-start">{{ pro_detail.product_name }}</h5>
+            <p class="text-start">{{ pro_detail.product_detail }}</p>
+            <h6 class="pt-1 text-start">Price: {{ pro_detail.product_price }}$</h6>
             <h6 class="pt-1 text-start">Quantity</h6>
             <input type="text" class="form-control" placeholder="1">
             <div class="d-flex d-sm-flex justify-content-sm-start my-3 align-items-center">
