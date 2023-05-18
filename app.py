@@ -61,6 +61,10 @@ def index():
 def product():
     return render_template('product.html')
 
+@app.route('/information', methods= ['GET', 'POST'])
+def information():
+    return render_template('information.html')
+
 @app.route('/payment')
 def payment():
     return render_template('payment.html')
