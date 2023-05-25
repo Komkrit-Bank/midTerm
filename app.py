@@ -63,6 +63,11 @@ def product(id):
     print(pro_detail)
     return render_template('product.html', pro_detail= pro_detail)
 
+@app.route('/cusinfo', methods= ['GET', 'POST'])
+def cusinfo():
+    print('Hello World')
+    return redirect('/payment')
+
 @app.route('/information', methods= ['GET', 'POST'])
 def information():
     return render_template('information.html')
