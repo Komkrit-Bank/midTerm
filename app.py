@@ -1,4 +1,4 @@
-from flask import Flask, render_template, request, redirect
+from flask import Flask, render_template, request, redirect, url_for
 import pandas as pd
 import sqlite3
 
@@ -36,7 +36,10 @@ def update_sql(type, conn, task, id):
     
     cur.execute(sql, task)
     conn.commit()
-    
+
+default_cart = 0
+cart_list = []
+
 def filter_data(column, con):
     cur.execute(f'SELECT * FROM product WHERE {column} = ?', (con,))
     data = cur.fetchall()
@@ -52,16 +55,23 @@ for row in rows:
 
 @app.route('/', methods=['GET', 'POST'])
 def index():
+    cart = default_cart
     products = rows
     category = 'console'
     review = request.form.get('review_select')
-    return render_template('index.html', review= review, products= products, category= category)
+    return render_template('index.html', review= review, products= products, category= category, cart= cart)
 
 @app.route('/product/<int:id>')
 def product(id):
     pro_detail = product_df[product_df['product_id'] == id].iloc[0, :][1:].to_dict()
-    print(pro_detail)
     return render_template('product.html', pro_detail= pro_detail)
+
+@app.route('/orderlist/<int:id>', methods=['GET'])
+def orderlist(id):
+    pro_detail = product_df[product_df['product_id'] == id].iloc[0, :][1:].to_dict()
+    cart_list.append(pro_detail)
+    default_cart = len(cart_list)
+    return redirect(url_for('index'))
 
 @app.route('/cusinfo', methods= ['GET', 'POST'])
 def cusinfo():
@@ -75,19 +85,6 @@ def information():
 @app.route('/payment')
 def payment():
     return render_template('payment.html')
-
-@app.route('/filterData')
-def filterData():
-    test = request.form['test-text']
-    return render_template('fetchtestpage.html', test= test)
-
-@app.route('/fetchtestpage', methods= ['GET', 'POST'])
-def fetchtestpage():
-    return render_template('fetchtestpage.html')
-
-@app.route('/fetchtest', methods= ['GET', 'POST'])
-def fetchtest():
-    return {'some text': 'it was a success!'}
 
 if __name__ == '__main__':
     app.run(debug= True)
