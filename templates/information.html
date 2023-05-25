@@ -1,7 +1,7 @@
 {% extends 'template.html'%}
 {% block title %}<title>Information</title>{% endblock %}
 {% block body%}
-    <div class="progressbar-wrapper d-sm-none d-xl-block mt-3">
+    <div class="progressbar-wrapper d-sm-none d-xl-block mt-3" style='margin-left: 20%; margin-right: 20%; '>
         <ul class="progressbar">
             <li class="active mb-3">information</li>
             <li>payment</li>
@@ -11,7 +11,7 @@
     <form action="" method="post">
         <div class="container d-grid justify-content-center">
             <div class="row">
-                <div class="col col-9 card">
+                <div class="col col-12 card">
                     <div class="row g-3 card-body">
                         <div class="col col-md-6">
                             <label for="firstname" class="col-form-label">Name: </label>
@@ -49,9 +49,6 @@
                         </div>
                         <button type="submit" class="button__carousel button__carousel--1 w-25 ms-3">Checkout</button>
                     </div>
-                </div>
-                <div class="col col-3 card">
-                    <h1>Hello World</h1>
                 </div>
             </div>
         </div>
