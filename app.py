@@ -82,10 +82,18 @@ def oncart():
     items = [item['product_id'] for item in on_cart ]
     items_qty = {id: items.count(id) for id in items}
     item_key = set(items)
-    print(item_key)
-    print(on_cart)
-    print(items_qty)
-    return render_template('cart.html',oncart= on_cart,cart= len(on_cart))
+    
+    items_show = {}
+    for key in item_key:
+        for item in on_cart:
+            if key == item['product_id']:
+                items_show[key] = item
+                items_show[key]['qty'] = items_qty[key]
+            else:
+                continue
+    
+    items_show = [items_show[key] for key in item_key]
+    return render_template('cart.html',oncart= items_show,cart= len(on_cart))
 
 @app.route('/cusinfo', methods= ['GET', 'POST'])
 def cusinfo():
