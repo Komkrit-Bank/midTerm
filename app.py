@@ -68,9 +68,12 @@ def product(id):
 
 @app.route('/orderlist/<int:id>', methods=['GET'])
 def orderlist(id):
-    pro_detail = product_df[product_df['product_id'] == id].iloc[0, :][1:].to_dict()
-    cart_list.append(pro_detail)
-    default_cart = len(cart_list)
+    if request.method == 'GET':
+        global default_cart
+        pro_detail = product_df[product_df['product_id'] == id].iloc[0, :][1:].to_dict()
+        cart_list.append(pro_detail)
+        default_cart = len(cart_list)
+        
     return redirect(url_for('index'))
 
 @app.route('/cusinfo', methods= ['GET', 'POST'])
