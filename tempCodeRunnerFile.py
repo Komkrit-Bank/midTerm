@@ -1,0 +1,1 @@
+items_qty = {id: items.count(id) for id in items}

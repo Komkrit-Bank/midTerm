@@ -58,11 +58,11 @@ option, select {
     color: rgba(255, 255, 255, 0.5)
 }
 
-svg {
+.bi-heart-fill {
     cursor: pointer;
 }
 
-svg:hover {
+.bi-heart-fill:hover {
     fill: red;
 }
 

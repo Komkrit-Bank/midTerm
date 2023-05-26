@@ -1,0 +1,31 @@
+{% extends 'template.html'%}
+{% block title %} <title>Stopping For Playing</title> {% endblock %}
+{% block body %}
+    <div class="container mt-3">
+        <header class="d-flex justify-content-between align-items-center">
+            <h2 class="text">Items Cart</h2>
+            <a href="/information" class="btn btn-primary btn-lg">Checkout</a>
+        </header>
+        <div class="card container-sm my-4">
+            {% for item in oncart%}
+                <div class="row card-body align-items-center">
+                    <div class="col col-2">
+                        <img class="img-fluid" src="/static/images/{{ item.product_img }}"/>
+                    </div>
+                    <div class="col col-4">
+                        <p class="text fs-6">{{ item.product_name }}</p>
+                    </div>
+                    <div class="col col-2 justify-content-end d-flex">
+                        <p class="text fs-6">1 Qty</p>
+                    </div>
+                    <div class="col col-4 justify-content-end d-flex gap-3">
+                        <button class="btn btn-lg btn-primary">Edit</button>
+                        <button class="btn btn-lg btn-danger">Delete</button>
+                    </div>
+                </div>
+                <hr>
+            {% endfor %}
+            </ul>
+        </div>
+    </div>
+{% endblock %}

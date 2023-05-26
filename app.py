@@ -64,17 +64,28 @@ def index():
 @app.route('/product/<int:id>')
 def product(id):
     pro_detail = product_df[product_df['product_id'] == id].iloc[0, :][1:].to_dict()
-    return render_template('product.html', pro_detail= pro_detail)
+    return render_template('product.html', pro_detail= pro_detail,cart= len(cart_list))
 
 @app.route('/orderlist/<int:id>', methods=['GET'])
 def orderlist(id):
     if request.method == 'GET':
         global default_cart
-        pro_detail = product_df[product_df['product_id'] == id].iloc[0, :][1:].to_dict()
+        pro_detail = product_df[product_df['product_id'] == id].iloc[0, :].to_dict()
         cart_list.append(pro_detail)
         default_cart = len(cart_list)
         
     return redirect(url_for('index'))
+
+@app.route('/cart')
+def oncart():
+    on_cart = cart_list
+    items = [item['product_id'] for item in on_cart ]
+    items_qty = {id: items.count(id) for id in items}
+    item_key = set(items)
+    print(item_key)
+    print(on_cart)
+    print(items_qty)
+    return render_template('cart.html',oncart= on_cart,cart= len(on_cart))
 
 @app.route('/cusinfo', methods= ['GET', 'POST'])
 def cusinfo():
