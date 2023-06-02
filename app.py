@@ -46,6 +46,7 @@ def filter_data(column, con):
     return data
 
 def oncartList(cart_list):
+    global on_cart
     on_cart = cart_list
     items = [item['product_id'] for item in on_cart ]
     items_qty = {id: items.count(id) for id in items}
@@ -58,8 +59,8 @@ def oncartList(cart_list):
                 items_show[key] = item
                 items_show[key]['qty'] = items_qty[key]
             else:
-                continue
-    return [items_show[key] for key in item_key]
+                continue  
+    return on_cart, [items_show[key] for key in item_key]
 
 product_df = pd.read_csv(r'src\productData.csv', encoding= 'utf8')
 rows = [tuple(row[1].to_list()) for row in product_df.iterrows()]
@@ -95,8 +96,8 @@ def orderlist(id):
 
 @app.route('/cart')
 def oncart():
-    items_show = oncartList(cart_list)
-    return render_template('cart.html',oncart= items_show,cart= len(items_show))
+    on_cart, items_show = oncartList(cart_list)
+    return render_template('cart.html',oncart= items_show,cart= len(on_cart))
 
 @app.route('/cusinfo', methods= ['GET', 'POST'])
 def cusinfo():
@@ -105,13 +106,13 @@ def cusinfo():
 
 @app.route('/information', methods= ['GET', 'POST'])
 def information():
-    items_show = oncartList(cart_list)
-    return render_template('information.html', cart= len(items_show))
+    on_cart, items_show = oncartList(cart_list)
+    return render_template('information.html', cart= len(on_cart))
 
 @app.route('/payment')
 def payment():
-    items_show = oncartList(cart_list)
-    return render_template('payment.html', oncart= items_show, cart= len(items_show))
+    on_cart, items_show = oncartList(cart_list)
+    return render_template('payment.html', oncart= items_show, cart= len(on_cart))
 
 if __name__ == '__main__':
     app.run(debug= True)
