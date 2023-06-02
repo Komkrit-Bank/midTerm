@@ -45,9 +45,26 @@ def filter_data(column, con):
     data = cur.fetchall()
     return data
 
+def oncartList(cart_list):
+    on_cart = cart_list
+    items = [item['product_id'] for item in on_cart ]
+    items_qty = {id: items.count(id) for id in items}
+    item_key = set(items)
+
+    items_show = {}
+    for key in item_key:
+        for item in on_cart:
+            if key == item['product_id']:
+                items_show[key] = item
+                items_show[key]['qty'] = items_qty[key]
+            else:
+                continue
+    return [items_show[key] for key in item_key]
+
 product_df = pd.read_csv(r'src\productData.csv', encoding= 'utf8')
 rows = [tuple(row[1].to_list()) for row in product_df.iterrows()]
 product_col = product_df.columns.to_list()
+
 
 for row in rows:
     update_sql('product', conn, row[1:], row[0])
@@ -78,22 +95,8 @@ def orderlist(id):
 
 @app.route('/cart')
 def oncart():
-    on_cart = cart_list
-    items = [item['product_id'] for item in on_cart ]
-    items_qty = {id: items.count(id) for id in items}
-    item_key = set(items)
-    
-    items_show = {}
-    for key in item_key:
-        for item in on_cart:
-            if key == item['product_id']:
-                items_show[key] = item
-                items_show[key]['qty'] = items_qty[key]
-            else:
-                continue
-    
-    items_show = [items_show[key] for key in item_key]
-    return render_template('cart.html',oncart= items_show,cart= len(on_cart))
+    items_show = oncartList(cart_list)
+    return render_template('cart.html',oncart= items_show,cart= len(items_show))
 
 @app.route('/cusinfo', methods= ['GET', 'POST'])
 def cusinfo():
@@ -102,11 +105,13 @@ def cusinfo():
 
 @app.route('/information', methods= ['GET', 'POST'])
 def information():
-    return render_template('information.html')
+    items_show = oncartList(cart_list)
+    return render_template('information.html', cart= len(items_show))
 
 @app.route('/payment')
 def payment():
-    return render_template('payment.html')
+    items_show = oncartList(cart_list)
+    return render_template('payment.html', oncart= items_show, cart= len(items_show))
 
 if __name__ == '__main__':
     app.run(debug= True)
