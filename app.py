@@ -109,6 +109,15 @@ def information():
     on_cart, items_show = oncartList(cart_list)
     return render_template('information.html', cart= len(on_cart))
 
+@app.route('/getCardInfo', methods= ['GET'])
+def getCardInfo():
+    return redirect('/confirmation')
+
+@app.route('/confirmation')
+def confirmation():
+    on_cart, items_show = oncartList(cart_list)
+    return render_template('confirmation.html', oncart= items_show, cart= len(on_cart))
+        
 @app.route('/payment')
 def payment():
     on_cart, items_show = oncartList(cart_list)
