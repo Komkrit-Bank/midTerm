@@ -16,16 +16,31 @@
                         <p class="text fs-6">{{ item.product_name }}</p>
                     </div>
                     <div class="col col-2 justify-content-end d-flex">
-                        <p class="text fs-6">{{ item.qty }} Qty</p>
+                        <p class="text fs-6">{{ item.qty }} <b>Qty</b></p>
                     </div>
-                    <div class="col col-4 justify-content-end d-flex gap-3">
+                    <div class="col col-1 justify-content-end d-flex">
+                        <p class="text fs-6">{{ item.product_price }}$</p>
+                    </div>
+                    <div class="col col-3 justify-content-end d-flex gap-3">
                         <button class="btn btn-lg btn-primary">Edit</button>
-                        <button class="btn btn-lg btn-danger">Delete</button>
+                        <a href='/delete/{{item.product_id}}' class="btn btn-lg btn-danger">Delete</a>
                     </div>
                 </div>
                 <hr>
             {% endfor %}
-            </ul>
+            {% if cart == 0 %}
+            <div class="row card-body">
+                <div class="col col-12 d-flex flex-wrap justify-content-center align-items-center">
+                    <p style="margin-top: 1rem; font-weight: bold; font-size: large">Your Cart is emply</p>
+                </div>
+            </div>
+            {% endif %}
+            {% if cart != 0 %}
+            <div class="container d-flex justify-content-between px-3">
+                <p style="font-weight:bold; font-size:larger">Total</p>
+                <p style="font-size:larger">{{ total }} $</p>
+            </div>
+            {% endif %}
         </div>
     </div>
 {% endblock %}

@@ -1,6 +1,7 @@
 from flask import Flask, render_template, request, redirect, url_for
 import pandas as pd
 import sqlite3
+import random
 
 app = Flask(__name__)
 
@@ -97,7 +98,15 @@ def orderlist(id):
 @app.route('/cart')
 def oncart():
     on_cart, items_show = oncartList(cart_list)
-    return render_template('cart.html',oncart= items_show,cart= len(on_cart))
+    total_price = sum([item['product_price'] for item in on_cart])
+    return render_template('cart.html',oncart= items_show,cart= len(on_cart), total= '{:,}'.format(total_price))
+
+@app.route('/delete/<int:id>')
+def delete(id):
+    on_cart.pop(on_cart.index([item for item in on_cart if item['product_id'] == id][0]))
+    global default_cart
+    default_cart = len(on_cart)
+    return redirect('/cart')
 
 @app.route('/cusinfo', methods= ['GET', 'POST'])
 def cusinfo():
