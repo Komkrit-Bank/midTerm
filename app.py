@@ -40,6 +40,8 @@ def update_sql(type, conn, task, id):
 
 default_cart = 0
 cart_list = []
+on_cart = []
+items_show = []
 
 def filter_data(column, con):
     cur.execute(f'SELECT * FROM product WHERE {column} = ?', (con,))
@@ -48,6 +50,7 @@ def filter_data(column, con):
 
 def oncartList(cart_list):
     global on_cart
+    global items_show
     on_cart = cart_list
     items = [item['product_id'] for item in on_cart ]
     items_qty = {id: items.count(id) for id in items}
@@ -60,8 +63,9 @@ def oncartList(cart_list):
                 items_show[key] = item
                 items_show[key]['qty'] = items_qty[key]
             else:
-                continue  
-    return on_cart, [items_show[key] for key in item_key]
+                continue
+    items_show = [items_show[key] for key in item_key]
+    # return on_cart, 
 
 product_df = pd.read_csv(r'src\productData.csv', encoding= 'utf8')
 rows = [tuple(row[1].to_list()) for row in product_df.iterrows()]
@@ -97,16 +101,22 @@ def orderlist(id):
 
 @app.route('/cart')
 def oncart():
-    on_cart, items_show = oncartList(cart_list)
+    oncartList(cart_list)
     total_price = sum([item['product_price'] for item in on_cart])
-    return render_template('cart.html',oncart= items_show,cart= len(on_cart), total= '{:,}'.format(total_price))
+    if default_cart == 0:
+        return redirect('/')
+    else:    
+        return render_template('cart.html',oncart= items_show,cart= len(on_cart), total= '{:,}'.format(total_price))
 
 @app.route('/delete/<int:id>')
 def delete(id):
-    on_cart.pop(on_cart.index([item for item in on_cart if item['product_id'] == id][0]))
     global default_cart
+    on_cart.pop(on_cart.index([item for item in on_cart if item['product_id'] == id][0]))
     default_cart = len(on_cart)
-    return redirect('/cart')
+    if default_cart == 0:
+        return redirect('/')
+    else:
+        return redirect('/cart')
 
 @app.route('/cusinfo', methods= ['GET', 'POST'])
 def cusinfo():
@@ -115,8 +125,11 @@ def cusinfo():
 
 @app.route('/information', methods= ['GET', 'POST'])
 def information():
-    on_cart, items_show = oncartList(cart_list)
-    return render_template('information.html', cart= len(on_cart))
+    oncartList(cart_list)
+    if default_cart == 0:
+        return redirect('/')
+    else:
+        return render_template('information.html', cart= len(on_cart))
 
 @app.route('/getCardInfo', methods= ['GET'])
 def getCardInfo():
@@ -124,12 +137,15 @@ def getCardInfo():
 
 @app.route('/confirmation')
 def confirmation():
-    on_cart, items_show = oncartList(cart_list)
-    return render_template('confirmation.html', oncart= items_show, cart= len(on_cart))
+    oncartList(cart_list)
+    if default_cart == 0:
+        return redirect('/')
+    else:
+        return render_template('confirmation.html', oncart= items_show, cart= len(on_cart))
         
 @app.route('/payment')
 def payment():
-    on_cart, items_show = oncartList(cart_list)
+    oncartList(cart_list)
     return render_template('payment.html', oncart= items_show, cart= len(on_cart))
 
 if __name__ == '__main__':
