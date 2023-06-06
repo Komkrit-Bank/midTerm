@@ -1,7 +1,6 @@
 from flask import Flask, render_template, request, redirect, url_for
 import pandas as pd
 import sqlite3
-import random
 
 app = Flask(__name__)
 
@@ -42,6 +41,7 @@ default_cart = 0
 cart_list = []
 on_cart = []
 items_show = []
+total_price = 0
 
 def filter_data(column, con):
     cur.execute(f'SELECT * FROM product WHERE {column} = ?', (con,))
@@ -102,6 +102,7 @@ def orderlist(id):
 @app.route('/cart')
 def oncart():
     oncartList(cart_list)
+    global total_price
     total_price = sum([item['product_price'] for item in on_cart])
     if default_cart == 0:
         return redirect('/')
@@ -141,12 +142,12 @@ def confirmation():
     if default_cart == 0:
         return redirect('/')
     else:
-        return render_template('confirmation.html', oncart= items_show, cart= len(on_cart))
+        return render_template('confirmation.html', oncart= items_show, cart= len(on_cart), total = '{:,}'.format(total_price))
         
 @app.route('/payment')
 def payment():
     oncartList(cart_list)
-    return render_template('payment.html', oncart= items_show, cart= len(on_cart))
+    return render_template('payment.html', oncart= items_show, cart= len(on_cart),total = '{:,}'.format(total_price))
 
 if __name__ == '__main__':
     app.run(debug= True)

@@ -10,7 +10,7 @@
     </div>
     <div class="container d-grid">
         <div class="row">
-            <div class="col col-6 mx-5 card">
+            <div class="col col-6 mx-4 card">
                 <div class="row g-3 card-body">
                     <h4>Payment</h4>
                     <form method="post">
@@ -58,15 +58,28 @@
                     </form>
                 </div>
             </div>
-            <div class="col col-4 card">
+            <div class="col col-5 card">
                 <div class="card-body">
                     <h4>Item on Cart</h4>
                         {% for item in oncart%}
-                        <div class="my-3" style="display: flex; justify-content:space-between">
-                            {{item.product_name}}<span>{{item.qty}} Qty</span><span>{{item.product_price}}</span>
+                        <div class="row my-3">
+                            <div class="col col-6 text-start">
+                                {{item.product_name}}
+                            </div>
+                            <div class="col col-2 text-center">
+                                {{item.qty}} Qty
+                            </div>
+                            <div class="col col-4 text-end">
+                                {{item.product_price}}$
+                            </div>
                         </div>
                         <hr>
                         {% endfor %}
+                        <div class="row my-3">
+                            <div class="col col-12 d-flex justify-content-between">
+                                <p><b>Total</b></p><span><p>{{ total }}$</p></span>
+                            </div>
+                        </div>
                 </div>
             </div>
         </div>
