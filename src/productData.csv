@@ -1,5 +1,5 @@
 product_id,product_name,product_price,product_cat,product_review,color,material,offer,product_detail,product_img
-101,PS5 Digital Edition (With Controller),559.99,console,,white,plastic,,Basic Bundle Playstation 5 with 2 controllers,566000000315201.webp
-102,Nintendo Switch(Redbox),535.99,console,,red,plastic,,"fit your life, transforming from home console to portable system in a snap.",cf2502b959c3c9b49b346539572d8ac1.jpg_720x720q80.jpg
-103,Xbox One Series X,559.99,console,,black,plastic,,"Look Better, Play Better with best optimized",593f0888bf76bb25008b5639.webp
-104,Xbox One Series S,459.99,console,,black,plastic,,Better Performance with light budget device,10138875.jpg
+101,PS5 Digital Edition (With Controller),559.99,console,null,white,plastic,null,Basic Bundle Playstation 5 with 2 controllers,566000000315201.webp
+102,Nintendo Switch(Redbox),535.99,console,null,red,plastic,null,"fit your life, transforming from home console to portable system in a snap.",cf2502b959c3c9b49b346539572d8ac1.jpg_720x720q80.jpg
+103,Xbox One Series X,559.99,console,null,black,plastic,null,"Look Better, Play Better with best optimized",593f0888bf76bb25008b5639.webp
+104,Xbox One Series S,459.99,console,null,black,plastic,null,Better Performance with light budget device,10138875.jpg

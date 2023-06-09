@@ -1,6 +1,7 @@
 from flask import Flask, render_template, request, redirect, url_for
 import pandas as pd
 import sqlite3
+import json
 
 app = Flask(__name__)
 
@@ -43,6 +44,7 @@ on_cart = []
 items_show = []
 total_price = 0
 
+
 def filter_data(column, con):
     cur.execute(f'SELECT * FROM product WHERE {column} = ?', (con,))
     data = cur.fetchall()
@@ -68,9 +70,13 @@ def oncartList(cart_list):
     # return on_cart, 
 
 product_df = pd.read_csv(r'src\productData.csv', encoding= 'utf8')
+product_df = product_df.fillna('null')
 rows = [tuple(row[1].to_list()) for row in product_df.iterrows()]
 product_col = product_df.columns.to_list()
+product_dict = [dict(zip(product_col, item)) for item in rows]
 
+with open('./src/productData.json', 'w') as file:
+    json.dump(product_dict, file, indent= 4)
 
 for row in rows:
     update_sql('product', conn, row[1:], row[0])
@@ -78,16 +84,21 @@ for row in rows:
 
 @app.route('/', methods=['GET', 'POST'])
 def index():
+    global product_dict
     cart = default_cart
     products = rows
     category = 'console'
     review = request.form.get('review_select')
-    return render_template('index.html', review= review, products= products, category= category, cart= cart)
+    return render_template('index.html', review= review, products= products, category= category, cart= cart, prodict= product_dict)
 
 @app.route('/product/<int:id>')
 def product(id):
     pro_detail = product_df[product_df['product_id'] == id].iloc[0, :][1:].to_dict()
     return render_template('product.html', pro_detail= pro_detail,cart= len(cart_list))
+
+@app.route('/product-list', methods= ['GET'])
+def product_list():
+    return product_dict
 
 @app.route('/orderlist/<int:id>', methods=['GET'])
 def orderlist(id):

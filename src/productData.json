@@ -1,0 +1,50 @@
+[
+    {
+        "product_id": 101,
+        "product_name": "PS5 Digital Edition (With Controller)",
+        "product_price": 559.99,
+        "product_cat": "console",
+        "product_review": "null",
+        "color": "white",
+        "material": "plastic",
+        "offer": "null",
+        "product_detail": "Basic Bundle Playstation 5 with 2 controllers",
+        "product_img": "566000000315201.webp"
+    },
+    {
+        "product_id": 102,
+        "product_name": "Nintendo Switch(Redbox)",
+        "product_price": 535.99,
+        "product_cat": "console",
+        "product_review": "null",
+        "color": "red",
+        "material": "plastic",
+        "offer": "null",
+        "product_detail": "fit your life, transforming from home console to portable system in a snap.",
+        "product_img": "cf2502b959c3c9b49b346539572d8ac1.jpg_720x720q80.jpg"
+    },
+    {
+        "product_id": 103,
+        "product_name": "Xbox One Series X",
+        "product_price": 559.99,
+        "product_cat": "console",
+        "product_review": "null",
+        "color": "black",
+        "material": "plastic",
+        "offer": "null",
+        "product_detail": "Look Better, Play Better with best optimized",
+        "product_img": "593f0888bf76bb25008b5639.webp"
+    },
+    {
+        "product_id": 104,
+        "product_name": "Xbox One Series S",
+        "product_price": 459.99,
+        "product_cat": "console",
+        "product_review": "null",
+        "color": "black",
+        "material": "plastic",
+        "offer": "null",
+        "product_detail": "Better Performance with light budget device",
+        "product_img": "10138875.jpg"
+    }
+]
