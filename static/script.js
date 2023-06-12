@@ -28,6 +28,17 @@ async function fetchData(){
     })
   }
 
+async function test1(){
+  const data = await fetch('/product-list')
+  return data
+}
+
+console.log(res)
+
+// async function appendData(){
+//   cardContainer.appendChild(card)
+// } 
+
   const handleEventSubmit = () => {
     const value = searchInput.value
     item_list.forEach(item => {
@@ -42,3 +53,5 @@ async function fetchData(){
 //         item.classList.toggle('hide', !isVisible)
 //     })
 // })
+
+fetchData()
