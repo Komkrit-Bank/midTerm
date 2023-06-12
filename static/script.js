@@ -28,12 +28,14 @@ async function main(){
     })
   }
 
-// searchInput.addEventListener('input', event => {
-//     const value = event.target.value
-//     item_list.forEach(item => {
-//         const isVisible = item.innerHTML.trim().toLowerCase().includes(value.toLowerCase())
-//         item.classList.toggle('hide', !isVisible)
-//     })
-// })
+searchInput.addEventListener('input', event => {
+    const value = event.target.value
+    const button = document.getElementById('btn-search')
+    if (value === ''){
+      button.disabled = true
+    }else {
+      button.disabled = false
+    }
+})
 
 main()

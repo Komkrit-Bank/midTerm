@@ -1,42 +1,60 @@
 {% extends 'template.html' %}
 {% block title %}<title>Stopping For Playing</title>{% endblock %}
 {% block body %}
-    <div class="container my-5" test-container>
-        <h3>Search Result: {{ number }} 
-            {% if number > 1 %}
-                items
-            {% else %}
-                item
-            {% endif %}
-        </h3>
-    </div>
-    {% block content %}
-    <form action="/orderlist" method="get">
-        <div class="container mx-auto">
-            <div class="row row-cols-1 row-cols-lg-4 row-cols-md-2">
-            {% for product in products %}
-                    <div class="col mb-3" item-card>
-                        <div class="card h-100">
-                        <img src="../static/images/{{ product.product_img }}" class="card-img-top h-100" alt="..." item-img>
-                        <div class="card-body">
-                            <h5 class="card-title" item-name><b>{{ product.product_name }}</b></h5>
-                            <p class="card-text" item-detail>{{ product.product_detail }}</p>
-                            <p class="card-text" item-price><b>Price: </b>{{ product.product_price }}<b>$</b></p>
-                            <div class="card__footer">
-                            <div class="button__container">
-                                <a href="{{ url_for('orderlist', id= product.product_id)}}" type="submit" class="btn btn-primary btn-sm btn__cart" btn-cart>Add to Cart</a>
-                                <a href="{{ url_for('product', id= product.product_id)}}" type="button" class="btn btn-dark btn-sm btn__cart" style="margin-left: 10pxs" btn-detail>Details</a>
-                            </div>
-                            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" class="bi bi-heart-fill align-self-center heart" viewBox="0 0 16 16">
-                                <path fill-rule="evenodd" d="M8 1.314C12.438-3.248 23.534 4.735 8 15-7.534 4.736 3.562-3.248 8 1.314z"/>
-                            </svg>
-                            </div>
-                        </div>
-                        </div>
-                    </div>
-            {% endfor %}
-            </div>
+    {% if number != 0 %}
+        <div class="container my-5" test-container>
+            <h3>Search Result: {{ number }} 
+                {% if number > 1 %}
+                    items
+                {% else %}
+                    item
+                {% endif %}
+            </h3>
         </div>
-    </form>
+    {% else %}
+    {% endif %}
+    {% block content %}
+        {% if number != 0 %}
+        <form action="/orderlist" method="get">
+            <div class="container mx-auto"></div>
+                <div class="row row-cols-1 row-cols-lg-4 row-cols-md-2">
+                {% for product in products %}
+                        <div class="col mb-3" item-card>
+                            <div class="card h-100">
+                            <img src="../static/images/{{ product.product_img }}" class="card-img-top h-100" alt="..." item-img>
+                            <div class="card-body">
+                                <h5 class="card-title" item-name><b>{{ product.product_name }}</b></h5>
+                                <p class="card-text" item-detail>{{ product.product_detail }}</p>
+                                <p class="card-text" item-price><b>Price: </b>{{ product.product_price }}<b>$</b></p>
+                                <div class="card__footer">
+                                <div class="button__container">
+                                    <a href="{{ url_for('orderlist', id= product.product_id)}}" type="submit" class="btn btn-primary btn-sm btn__cart" btn-cart>Add to Cart</a>
+                                    <a href="{{ url_for('product', id= product.product_id)}}" type="button" class="btn btn-dark btn-sm btn__cart" style="margin-left: 10pxs" btn-detail>Details</a>
+                                </div>
+                                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" class="bi bi-heart-fill align-self-center heart" viewBox="0 0 16 16">
+                                    <path fill-rule="evenodd" d="M8 1.314C12.438-3.248 23.534 4.735 8 15-7.534 4.736 3.562-3.248 8 1.314z"/>
+                                </svg>
+                                </div>
+                            </div>
+                            </div>
+                        </div>
+                {% endfor %}
+                </div>
+            </form>
+        {% else %}
+            <div class="container my-5 d-flex justify-content-center">
+                <div class="d-flex justify-content-center" style="flex-direction:column">
+                    <div class="badge bg-dark text-uppercase fs-3 text-wrap">
+                        Item not found
+                    </div>
+                    <div class="d-flex justify-content-center">
+                        <img class="mt-5" src="../static/undraw_empty_cart_co35.svg" alt="" 
+                        style="width: 60%; height: auto;">
+                    </div>
+                </div>
+            </div>
+        {% endif %}
+        </div>
+    
     {% endblock %}
 {% endblock %}
