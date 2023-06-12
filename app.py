@@ -119,10 +119,20 @@ def oncart():
         return redirect('/')
     else:    
         return render_template('cart.html',oncart= items_show,cart= len(on_cart), total= '{:,}'.format(total_price))
-    
-@app.route('/searchresult')
-def searchResult():
-    return render_template('search.html')
+
+@app.route('/search', methods = ['GET', 'POST'])
+def search():
+    key = request.form['data-search']
+    return redirect(f'/search/{key}')
+
+@app.route('/search/<string:keyword>')
+def searchResult(keyword):
+    result_search = [item for item in product_dict if keyword.lower() in item['product_name'].lower()]
+    oncartList(cart_list)
+    if len(result_search) == 1:
+        return redirect('/product/{}'.format(result_search[0]['product_id']))
+    else:
+        return render_template('search.html', cart= len(on_cart), products= result_search, number= len(result_search))
 
 @app.route('/delete/<int:id>')
 def delete(id):

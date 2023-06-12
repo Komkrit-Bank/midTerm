@@ -45,9 +45,9 @@
                 <a class="nav-link" href="">Delivery</a>
               </li>
             </ul>
-            <form class="d-flex w-50" role="search">
+            <form action= '/search' class="d-flex w-50" role="search" method="post">
                 <input class="form-control rounded-end me-2" type="search" placeholder="Search" aria-label="Search"
-                style="border-radius: 0%;" data-search>
+                style="border-radius: 0%;" name='data-search'>
                   <ul class="d-none" id="item_list">
                     {% for product in prodict %}
                       <option class="{{ product.product_cat }}" id='{{ product.product_id }}'>
@@ -55,7 +55,7 @@
                       </option>
                     {% endfor %}
                   </ul>
-              <button class="btn btn-outline-success" type="submit" onclick="handleEventSubmit()" id="btn-search">Search</button>
+              <button class="btn btn-outline-success" type="submit" id="btn-search">Search</button>
             </form>
             <a type="button"
             {% if cart != 0 %}

@@ -5,7 +5,7 @@ const itemCardTemplate = document.querySelector('[data-show-template]')
 const searchResult = document.querySelector('[search-result]')
 const cardContainer = document.querySelector('[card-container]')
 
-async function fetchData(){
+async function main(){
   await fetch("/product-list")
     .then(response => response.json())
     .then(data => {
@@ -20,18 +20,11 @@ async function fetchData(){
         image.src = `static/images/${item.product_img}`
         name.textContent = item.product_name;
         detail.textContent = item.product_detail;
-        price.innerHTML = `<b>Price: </b>${item.product_price}$`;
+        price.innerHTML = `<b>Price: </b>${item.product_price}<b>$</b>`;
         btn_cart.href = `/orderlist/${item.product_id}`
         btn_detail.href = `/product/${item.product_id}`
         cardContainer.appendChild(card)
       })
-    })
-  }
-
-  const handleEventSubmit = () => {
-    const value = searchInput.value
-    item_list.forEach(item => {
-      console.log(item)
     })
   }
 
@@ -42,3 +35,5 @@ async function fetchData(){
 //         item.classList.toggle('hide', !isVisible)
 //     })
 // })
+
+main()
