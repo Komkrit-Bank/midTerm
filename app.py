@@ -108,7 +108,7 @@ def orderlist(id):
         cart_list.append(pro_detail)
         default_cart = len(cart_list)
         
-    return redirect(url_for('index'))
+    return redirect('/')
 
 @app.route('/cart')
 def oncart():
@@ -119,6 +119,10 @@ def oncart():
         return redirect('/')
     else:    
         return render_template('cart.html',oncart= items_show,cart= len(on_cart), total= '{:,}'.format(total_price))
+    
+@app.route('/searchresult')
+def searchResult():
+    return render_template('search.html')
 
 @app.route('/delete/<int:id>')
 def delete(id):

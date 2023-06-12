@@ -173,29 +173,6 @@
     <form action="/orderlist" method="get">
       <div class="container mx-auto">
         <div class="row row-cols-1 row-cols-lg-4 row-cols-md-2" card-container>
-          <!-- <template data-show-template>
-            {% for product in products %}
-            <div class="col mb-3">
-              <div class="card h-100">
-                <img src="static/images/{{ product[9] }}" class="card-img-top h-100" alt="...">
-                <div class="card-body">
-                  <h5 class="card-title"><b>{{ product[1] }}</b></h5>
-                  <p class="card-text">{{ product[8] }}</p>
-                  <p class="card-text"><b>Price: </b> {{ product[2] }} <b>$</b></p>
-                  <div class="card__footer">
-                    <div class="button__container">
-                      <a href="{{ url_for('orderlist', id= product[0])}}" type="submit" class="btn btn-primary btn-sm btn__cart">Add to Cart</a>
-                      <a href="{{ url_for('product', id= product[0])}}" type="button" class="btn btn-dark btn-sm btn__cart" style="margin-left: 10pxs">Details</a>
-                    </div>
-                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" class="bi bi-heart-fill align-self-center heart" viewBox="0 0 16 16">
-                      <path fill-rule="evenodd" d="M8 1.314C12.438-3.248 23.534 4.735 8 15-7.534 4.736 3.562-3.248 8 1.314z"/>
-                    </svg>
-                  </div>
-                </div>
-              </div>
-            </div>
-            {% endfor %}
-          </template> -->
         </div>
       </div>
     </form>
@@ -210,8 +187,8 @@
             <p class="card-text" item-price><b>Price: </b><b>$</b></p>
             <div class="card__footer">
               <div class="button__container">
-                <a href="" type="submit" class="btn btn-primary btn-sm btn__cart">Add to Cart</a>
-                <a href="" type="button" class="btn btn-dark btn-sm btn__cart" style="margin-left: 10pxs">Details</a>
+                <a href="" type="submit" class="btn btn-primary btn-sm btn__cart" btn-cart>Add to Cart</a>
+                <a href="" type="button" class="btn btn-dark btn-sm btn__cart" style="margin-left: 10pxs" btn-detail>Details</a>
               </div>
               <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" class="bi bi-heart-fill align-self-center heart" viewBox="0 0 16 16">
                 <path fill-rule="evenodd" d="M8 1.314C12.438-3.248 23.534 4.735 8 15-7.534 4.736 3.562-3.248 8 1.314z"/>
