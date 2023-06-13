@@ -94,7 +94,7 @@ def index():
 @app.route('/product/<int:id>')
 def product(id):
     pro_detail = product_df[product_df['product_id'] == id].iloc[0, :][1:].to_dict()
-    return render_template('product.html', pro_detail= pro_detail,cart= len(cart_list))
+    return render_template('product.html', pro_detail= pro_detail,cart= len(cart_list), product_id= id)
 
 @app.route('/product-list', methods= ['GET'])
 def product_list():
